@@ -13,9 +13,7 @@ router.post('/:room/update', (req, res, next) => {
   const roomId = req.params.room;
   const newMessage = req.body.message;
   Room.findOneAndUpdate({ code: roomId }, { $push: { messages: newMessage } }, { new: true })
-    .then((roomFound) => {
-      console.log(roomFound);
-    })
+    .then()
     .catch(next);
 });
 

@@ -19,7 +19,10 @@ mongoose.connect('mongodb://localhost/flip-chat-rooms', {
 });
 
 // => Middlewares
-app.use(cors());
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:4200']
+}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
