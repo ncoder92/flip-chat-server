@@ -12,6 +12,10 @@ io.on('connection', (socket) => {
     socket.join(room);
     currentRoom = room;
   });
+
+  socket.on('disconnect', () => {
+    console.log('A user disconnected');
+  });
 });
 
 module.exports = io;
