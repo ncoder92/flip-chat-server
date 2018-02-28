@@ -3,11 +3,14 @@ const io = require('socket.io')();
 /* GET home page. */
 io.on('connection', (socket) => {
   console.log('A user connected');
-  const defaultRoom = '255699';
-  socket.join(defaultRoom);
-
+  let currentRoom;
   socket.on('sending-message', (message) => {
-    io.to(defaultRoom).emit('new-message', message);
+    io.to(currentRoom).emit('new-message', message);
+  });
+
+  socket.on('join-room', (room) => {
+    socket.join(room);
+    currentRoom = room;
   });
 });
 

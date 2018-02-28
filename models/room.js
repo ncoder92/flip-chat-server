@@ -5,7 +5,7 @@ const RoomSchema = new Schema({
   code: String,
   messages: [
     {
-      handler: String,
+      handle: String,
       message: String
     }
   ]
