@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const logger = require('morgan');
@@ -13,7 +14,7 @@ const app = express();
 
 // => Initialize Database
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/flip-chat-rooms', {
+mongoose.connect(process.env.MONGODB_URI, {
   keepAlive: true,
   reconnectTries: Number.MAX_VALUE
 });
@@ -22,7 +23,7 @@ mongoose.connect('mongodb://localhost/flip-chat-rooms', {
 app.use(
   cors({
     credentials: true,
-    origin: ['http://localhost:4200']
+    origin: [process.env.CLIENT_URL]
   })
 );
 app.use(logger('dev'));
