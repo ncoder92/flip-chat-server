@@ -13,6 +13,10 @@ io.on('connection', (socket) => {
     currentRoom = room;
   });
 
+  socket.on('leave-room', (room) => {
+    socket.leave(room);
+  });
+
   socket.on('disconnect', () => {
     console.log('A user disconnected');
   });
