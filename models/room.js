@@ -8,7 +8,9 @@ const RoomSchema = new Schema({
       handle: String,
       message: String
     }
-  ]
+  ],
+  password: String,
+  isProtected: { type: Boolean, default: false }
 });
 
 const Room = mongoose.model('Room', RoomSchema);
